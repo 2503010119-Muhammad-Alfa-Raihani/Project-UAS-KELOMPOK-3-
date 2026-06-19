@@ -1,58 +1,41 @@
 #include <iostream>
-#include "Peminjaman.h"
-#include "Pengembalian.h"
-#include "Pencarian.h"
+#include "perpustakaan.h"
+#include "peminjamanbuku.h"
 #include "Rekomendasi.h"
 
 using namespace std;
 
 int main() {
+    Perpustakaan p;
+    PeminjamanBuku pb;
+    Rekomendasi r;
 
     int pilihan;
 
-    Peminjaman pinjam;
-    Pengembalian kembali;
-    Pencarian cari;
-    Rekomendasi rekomendasi;
-
     do {
-
-        cout << "\n=== SISTEM PERPUSTAKAAN MODERN ===\n";
-        cout << "1. Peminjaman Buku\n";
-        cout << "2. Pengembalian Buku\n";
-        cout << "3. Pencarian Buku\n";
-        cout << "4. Rekomendasi Buku\n";
+        cout << "\n=== SISTEM PERPUSTAKAAN ===\n";
+        cout << "1. Kelola Buku\n";
+        cout << "2. Peminjaman Buku\n";
+        cout << "3. Rekomendasi\n";
         cout << "0. Keluar\n";
-        cout << "Pilihan : ";
+        cout << "Pilih: ";
         cin >> pilihan;
 
-        switch (pilihan) {
-
+        switch(pilihan) {
             case 1:
-                pinjam.pinjamBuku();
+                p.menuPerpustakaan();
                 break;
 
             case 2:
-                kembali.kembalikanBuku();
+                pb.menuPeminjaman();
                 break;
 
             case 3:
-                cari.cariBuku();
+                r.menuRekomendasi();
                 break;
-
-            case 4:
-                rekomendasi.rekomendasiBuku();
-                break;
-
-            case 0:
-                cout << "Program selesai.\n";
-                break;
-
-            default:
-                cout << "Pilihan tidak tersedia.\n";
         }
 
-    } while (pilihan != 0);
+    } while(pilihan != 0);
 
     return 0;
 }
