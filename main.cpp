@@ -1,22 +1,27 @@
 #include <iostream>
-#include "Perpustakaan.h"
+#include "Peminjaman.h"
+#include "Pengembalian.h"
+#include "Pencarian.h"
+#include "Rekomendasi.h"
 
 using namespace std;
 
 int main() {
 
-    Perpustakaan p;
     int pilihan;
+
+    Peminjaman pinjam;
+    Pengembalian kembali;
+    Pencarian cari;
+    Rekomendasi rekomendasi;
 
     do {
 
         cout << "\n=== SISTEM PERPUSTAKAAN MODERN ===\n";
-        cout << "1. Tambah Buku\n";
-        cout << "2. Tampilkan Buku\n";
-        cout << "3. Peminjaman Buku\n";
-        cout << "4. Pengembalian Buku\n";
-        cout << "5. Pencarian Buku\n";
-        cout << "6. Rekomendasi Buku\n";
+        cout << "1. Peminjaman Buku\n";
+        cout << "2. Pengembalian Buku\n";
+        cout << "3. Pencarian Buku\n";
+        cout << "4. Rekomendasi Buku\n";
         cout << "0. Keluar\n";
         cout << "Pilihan : ";
         cin >> pilihan;
@@ -24,27 +29,19 @@ int main() {
         switch (pilihan) {
 
             case 1:
-                p.tambahBuku();
+                pinjam.pinjamBuku();
                 break;
 
             case 2:
-                p.tampilkanBuku();
+                kembali.kembalikanBuku();
                 break;
 
             case 3:
-                p.pinjamBuku();
+                cari.cariBuku();
                 break;
 
             case 4:
-                p.kembalikanBuku();
-                break;
-
-            case 5:
-                p.cariBuku();
-                break;
-
-            case 6:
-                p.rekomendasiBuku();
+                rekomendasi.rekomendasiBuku();
                 break;
 
             case 0:
@@ -52,7 +49,7 @@ int main() {
                 break;
 
             default:
-                cout << "Pilihan tidak valid.\n";
+                cout << "Pilihan tidak tersedia.\n";
         }
 
     } while (pilihan != 0);
