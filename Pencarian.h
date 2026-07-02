@@ -1,27 +1,22 @@
-#ifndef PERPUSTAKAAN_H
-#define PERPUSTAKAAN_H
+#ifndef PENCARIAN_H
+#define PENCARIAN_H
 
-#include <vector>
 #include <string>
+#include "perpustakaan.h"
 
 using namespace std;
 
-struct Buku {
-    string judul;
-    string penulis;
-    string kategori;
-};
-
-class Perpustakaan {
+class Pencarian {
 private:
-    vector<Buku> daftarBuku;
+    Perpustakaan* perpus;
 
 public:
-    void tambahBuku(Buku buku);
-
-    vector<Buku> cariJudul(string judul);
-    vector<Buku> cariPenulis(string penulis);
-    vector<Buku> cariKategori(string kategori);
+    Pencarian(Perpustakaan* p = nullptr);
+    
+    void menuPencarian();
+    void cariByJudul();
+    void cariByPenulis();
+    void cariByKategori();
 };
 
 #endif
