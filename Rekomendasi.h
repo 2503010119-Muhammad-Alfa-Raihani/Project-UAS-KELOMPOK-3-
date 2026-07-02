@@ -1,20 +1,20 @@
-#ifndef PERPUSTAKAAN_H
-#define PERPUSTAKAAN_H
+#ifndef REKOMENDASI_H
+#define REKOMENDASI_H
 
-#include <vector>
-#include "Buku.h"
+#include <string>
+#include "perpustakaan.h"
+
 using namespace std;
 
-class Perpustakaan {
+class Rekomendasi {
 private:
-    vector<Buku> daftarBuku;
+    Perpustakaan* perpus;
 
 public:
-    void tambahBuku(Buku buku);
-    void tampilkanBuku();
-
-    // Fungsi rekomendasi buku
-    void rekomendasiBuku();
+    Rekomendasi(Perpustakaan* p = nullptr);
+    
+    void menuRekomendasi();
+    void rekomendasiBukuPopuler();
 };
 
 #endif
