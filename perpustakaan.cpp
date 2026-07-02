@@ -9,7 +9,7 @@ Perpustakaan::Perpustakaan() {
     // Inisialisasi daftar buku dengan sample data
     daftarBuku[0] = Buku(1, "Cara Jago Ngoding", "Adi Pratama", "Teknologi", 5, 2000);
     daftarBuku[1] = Buku(2, "Cara Tidur Cepat", "Dr. Sleep Well", "Kesehatan", 3, 2000);
-    daftarBuku[2] = Buku(3, "Cara Dapat Uang Banyak", "Money Master", "Bisnis", 4, 2000);
+    daftarBuku[2] = Buku(3, "Cara Dapat Uang Sambil tidur", "Money Master", "Bisnis", 4, 2000);
     jumlahBuku = 3;
 }
 
