@@ -24,6 +24,11 @@ void PeminjamanBuku::menuPeminjaman() {
             case 2:
                 pinjamBukuMenu();
                 break;
+            case 0:
+                cout << "\nKembali ke menu utama...\n";
+                break;
+            default:
+                cout << "\nPilihan tidak valid! Silakan pilih 0-2.\n";
         }
     } while(pilihan != 0);
 }
