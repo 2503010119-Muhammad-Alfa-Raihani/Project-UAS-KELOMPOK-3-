@@ -19,6 +19,11 @@ void Pengembalian::menuPengembalian() {
             case 1:
                 kembalikanBukuMenu();
                 break;
+            case 0:
+                cout << "\nKembali ke menu utama...\n";
+                break;
+            default:
+                cout << "\nPilihan tidak valid! Silakan pilih 0 atau 1.\n";
         }
     } while(pilihan != 0);
 }
