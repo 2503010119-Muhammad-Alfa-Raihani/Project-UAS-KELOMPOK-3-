@@ -1,17 +1,75 @@
-#ifndef PERPUSTAKAAN_H
-#define PERPUSTAKAAN_H
+#include "peminjamanbuku.h"
+#include <iostream>
 
-#include <vector>
-#include <string>
-#include "Buku.h" 
+using namespace std;
 
-class Perpustakaan {
-private:
-    std::vector<Buku> daftarBuku; 
+PeminjamanBuku::PeminjamanBuku(Perpustakaan* p) : perpus(p) {}
 
-public:A
+void PeminjamanBuku::menuPeminjaman() {
+    int pilihan;
     
-    bool pinjamBuku(int idBuku);     
-};
+    do {
+        cout << "\n=== MENU PEMINJAMAN ===\n";
+        cout << "1. Lihat Buku Tersedia\n";
+        cout << "2. Pinjam Buku\n";
+        cout << "0. Kembali\n";
+        cout << "Pilih: ";
+        cin >> pilihan;
+        cin.ignore();
+        
+        switch(pilihan) {
+            case 1:
+                lihatBukuTersedia();
+                break;
+            case 2:
+                pinjamBukuMenu();
+                break;
+            case 0:
+                cout << "\nKembali ke menu utama...\n";
+                break;
+            default:
+                cout << "\nPilihan tidak valid! Silakan pilih 0-2.\n";
+        }
+    } while(pilihan != 0);
+}
 
-#endif
+void PeminjamanBuku::lihatBukuTersedia() {
+    if(!perpus) {
+        cout << "Error: Perpustakaan tidak tersedia!\n";
+        return;
+    }
+    
+    cout << "\n=== BUKU TERSEDIA UNTUK DIPINJAM ===\n";
+    
+    int jumlah = perpus->getJumlahBuku();
+    bool ada = false;
+    
+    for(int i = 0; i < jumlah; i++) {
+        Buku* buku = perpus->getBuku(i);
+        if(buku && buku->getStok() > 0) {
+            cout << "\nID       : " << buku->getId() << endl;
+            cout << "Judul    : " << buku->getJudul() << endl;
+            cout << "Penulis  : " << buku->getPenulis() << endl;
+            cout << "Kategori : " << buku->getKategori() << endl;
+            cout << "Stok     : " << buku->getStok() << endl;
+            ada = true;
+        }
+    }
+    
+    if(!ada) {
+        cout << "Semua buku sedang habis!\n";
+    }
+}
+
+void PeminjamanBuku::pinjamBukuMenu() {
+    if(!perpus) {
+        cout << "Error: Perpustakaan tidak tersedia!\n";
+        return;
+    }
+    
+    int idBuku;
+    cout << "\nMasukkan ID Buku yang ingin dipinjam: ";
+    cin >> idBuku;
+    
+    perpus->pinjamBuku(idBuku);
+}
