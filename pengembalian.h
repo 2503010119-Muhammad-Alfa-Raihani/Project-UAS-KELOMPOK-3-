@@ -1,30 +1,21 @@
-#ifndef BUKU_H
-#define BUKU_H
+#ifndef PENGEMBALIAN_H
+#define PENGEMBALIAN_H
 
-#include <string>
 #include <iostream>
+#include <string>
+#include "perpustakaan.h"
+
 using namespace std;
 
-class Buku {
+class Pengembalian {
 private:
-    string idBuku;
-    string judul;
-    string peminjam;
-    bool statusPinjam; // true = dipinjam, false = ada di rak
-    int dendaPerHari;
+    Perpustakaan* perpus;
 
 public:
-    // Constructor
-    Buku(string id, string jdl, int denda = 2000);
+    Pengembalian(Perpustakaan* p = nullptr);
     
-    // Method
-    void pinjam(string nama);
-    int kembalikan(int hariTerlambat);
-    void tampilkanInfo();
-    
-    // Getter
-    string getId();
-    bool isDipinjam();
+    void menuPengembalian();
+    void kembalikanBukuMenu();
 };
 
 #endif
