@@ -25,6 +25,11 @@ void Pencarian::menuPencarian() {
             case 3:
                 cariByKategori();
                 break;
+            case 0:
+                cout << "\nKembali ke menu utama...\n";
+                break;
+            default:
+                cout << "\nPilihan tidak valid! Silakan pilih 0-3.\n";
         }
     } while(pilihan != 0);
 }
