@@ -1,38 +1,52 @@
-#include "Perpustakaan.h"
-#include <iostream>
+#include "Rekomendasi.h"
+
 using namespace std;
 
-void Perpustakaan::tambahBuku(Buku buku) {
-    daftarBuku.push_back(buku);
+Rekomendasi::Rekomendasi(Perpustakaan* p) : perpus(p) {}
+
+void Rekomendasi::menuRekomendasi() {
+    int pilihan;
+    
+    do {
+        cout << "\n=== MENU REKOMENDASI ===\n";
+        cout << "1. Lihat Buku Populer (Stok Tersedia)\n";
+        cout << "0. Kembali\n";
+        cout << "Pilih: ";
+        cin >> pilihan;
+        cin.ignore();
+        
+        switch(pilihan) {
+            case 1:
+                rekomendasiBukuPopuler();
+                break;
+        }
+    } while(pilihan != 0);
 }
 
-void Perpustakaan::tampilkanBuku() {
-    for (int i = 0; i < daftarBuku.size(); i++) {
-        cout << "Judul : " << daftarBuku[i].getJudul() << endl;
-        cout << "Penulis : " << daftarBuku[i].getPenulis() << endl;
-        cout << "Kategori : " << daftarBuku[i].getKategori() << endl;
-        cout << "Stok : " << daftarBuku[i].getStok() << endl;
-        cout << "======================" << endl;
+void Rekomendasi::rekomendasiBukuPopuler() {
+    if(!perpus) {
+        cout << "Error: Perpustakaan tidak tersedia!\n";
+        return;
     }
-}
-
-void Perpustakaan::rekomendasiBuku() {
-    cout << "\n=== REKOMENDASI BUKU ===\n";
-
+    
+    cout << "\n=== REKOMENDASI BUKU POPULER ===\n";
+    
+    int jumlah = perpus->getJumlahBuku();
     bool ada = false;
-
-    for (int i = 0; i < daftarBuku.size(); i++) {
-        if (daftarBuku[i].getStok() > 0) {
-            cout << "Judul : " << daftarBuku[i].getJudul() << endl;
-            cout << "Penulis : " << daftarBuku[i].getPenulis() << endl;
-            cout << "Kategori : " << daftarBuku[i].getKategori() << endl;
-            cout << "Stok : " << daftarBuku[i].getStok() << endl;
-            cout << "----------------------" << endl;
+    
+    for(int i = 0; i < jumlah; i++) {
+        Buku* buku = perpus->getBuku(i);
+        if(buku && buku->getStok() > 0) {
+            cout << "\nID       : " << buku->getId() << endl;
+            cout << "Judul    : " << buku->getJudul() << endl;
+            cout << "Penulis  : " << buku->getPenulis() << endl;
+            cout << "Kategori : " << buku->getKategori() << endl;
+            cout << "Stok     : " << buku->getStok() << endl;
             ada = true;
         }
     }
-
-    if (!ada) {
-        cout << "Tidak ada buku yang direkomendasikan." << endl;
+    
+    if(!ada) {
+        cout << "Tidak ada buku yang tersedia untuk direkomensasikan.\n";
     }
 }
