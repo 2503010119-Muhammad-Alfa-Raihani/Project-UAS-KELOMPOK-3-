@@ -1,13 +1,4 @@
-#ifndef PERPUSTAKAAN_H
-#define PERPUSTAKAAN_H
-
-#include <vector>
-#include <string>
-#include "Buku.h" 
-
-class Perpustakaan {
-private:
-    std::vector<Buku> daftarBuku; #ifndef PEMINJAMANBUKU_H
+#ifndef PEMINJAMANBUKU_H
 #define PEMINJAMANBUKU_H
 
 #include <iostream>
@@ -26,14 +17,6 @@ public:
     void menuPeminjaman();
     void pinjamBukuMenu();
     void lihatBukuTersedia();
-};
-
-#endif
-
-
-public:A
-    
-    bool pinjamBuku(int idBuku);     
 };
 
 #endif
