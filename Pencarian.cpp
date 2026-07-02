@@ -1,41 +1,60 @@
-#include "Perpustakaan.h"
+#include "Pencarian.h"
 
-void Perpustakaan::tambahBuku(Buku buku) {
-    daftarBuku.push_back(buku);
+Pencarian::Pencarian(Perpustakaan* p) : perpus(p) {}
+
+void Pencarian::menuPencarian() {
+    int pilihan;
+    
+    do {
+        cout << "\n=== MENU PENCARIAN ===\n";
+        cout << "1. Cari berdasarkan Judul\n";
+        cout << "2. Cari berdasarkan Penulis\n";
+        cout << "3. Cari berdasarkan Kategori\n";
+        cout << "0. Kembali\n";
+        cout << "Pilih: ";
+        cin >> pilihan;
+        cin.ignore();
+        
+        switch(pilihan) {
+            case 1:
+                cariByJudul();
+                break;
+            case 2:
+                cariByPenulis();
+                break;
+            case 3:
+                cariByKategori();
+                break;
+        }
+    } while(pilihan != 0);
 }
 
-vector<Buku> Perpustakaan::cariJudul(string judul) {
-    vector<Buku> hasil;
-
-    for (const auto& buku : daftarBuku) {
-        if (buku.judul == judul) {
-            hasil.push_back(buku);
-        }
-    }
-
-    return hasil;
+void Pencarian::cariByJudul() {
+    if(!perpus) return;
+    
+    string judul;
+    cout << "\nMasukkan judul buku: ";
+    getline(cin, judul);
+    
+    perpus->cariJudul(judul);
 }
 
-vector<Buku> Perpustakaan::cariPenulis(string penulis) {
-    vector<Buku> hasil;
-
-    for (const auto& buku : daftarBuku) {
-        if (buku.penulis == penulis) {
-            hasil.push_back(buku);
-        }
-    }
-
-    return hasil;
+void Pencarian::cariByPenulis() {
+    if(!perpus) return;
+    
+    string penulis;
+    cout << "\nMasukkan nama penulis: ";
+    getline(cin, penulis);
+    
+    perpus->cariPenulis(penulis);
 }
 
-vector<Buku> Perpustakaan::cariKategori(string kategori) {
-    vector<Buku> hasil;
-
-    for (const auto& buku : daftarBuku) {
-        if (buku.kategori == kategori) {
-            hasil.push_back(buku);
-        }
-    }
-
-    return hasil;
+void Pencarian::cariByKategori() {
+    if(!perpus) return;
+    
+    string kategori;
+    cout << "\nMasukkan kategori: ";
+    getline(cin, kategori);
+    
+    perpus->cariKategori(kategori);
 }
